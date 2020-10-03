@@ -44,7 +44,7 @@ class PhotoLinearAdapter ( val onClickListener: OnClickListener ) :
      */
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): MarsPropertyViewHolder {
-        return MarsPropertyViewHolder(LinearViewItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return MarsPropertyViewHolder(LinearViewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     /**
