@@ -17,24 +17,29 @@
 
 package com.example.android.marsrealestate
 
+import android.app.Application
 import android.view.View
+import android.view.animation.Transformation
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.Transformations
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.marsrealestate.network.MarsProperty
 import com.example.android.marsrealestate.overview.MarsApiStatus
 import com.example.android.marsrealestate.overview.PhotoGridAdapter
+import com.example.android.marsrealestate.overview.PhotoLinearAdapter
 
 /**
  * When there is no Mars property data (data is null), hide the [RecyclerView], otherwise show it.
  */
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<MarsProperty>?) {
-    val adapter = recyclerView.adapter as PhotoGridAdapter
+//    val adapter = recyclerView.adapter as PhotoGridAdapter
+    val adapter = recyclerView.adapter as PhotoLinearAdapter
     adapter.submitList(data)
 }
 
@@ -76,3 +81,31 @@ fun bindStatus(statusImageView: ImageView, status: MarsApiStatus?) {
         }
     }
 }
+
+@BindingAdapter("displayPropertyTypeChange")
+fun TextView.setDisplayPropertyTypeChange(displayPropertyType: MarsProperty?) {
+    displayPropertyType?.let {
+        text = when(it.isRental) {
+            true -> resources.getString(R.string.display_type, resources.getString(R.string.type_rent))
+            false -> resources.getString(R.string.display_type, resources.getString(R.string.type_sale))
+        }
+    }
+}
+
+@BindingAdapter("displayPropertyPriceChange")
+fun TextView.setDisplayPropertyPriceChange(displayPropertyPrice: MarsProperty?) {
+    displayPropertyPrice?.let {
+        text = when (it.isRental) {
+            true -> resources.getString(R.string.display_price_monthly_rental, displayPropertyPrice.price)
+            false -> resources.getString(R.string.display_price, displayPropertyPrice.price)
+        }
+    }
+}
+
+//val displayPropertyPrice = Transformations.map(selectedProperty) {
+//    app.applicationContext.getString(
+//            when (it.isRental) {
+//                true -> R.string.display_price_monthly_rental
+//                false -> R.string.display_price
+//            }, it.price)
+//}

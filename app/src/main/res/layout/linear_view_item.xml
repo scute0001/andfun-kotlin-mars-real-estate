@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="property"
+            type="com.example.android.marsrealestate.network.MarsProperty" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/mars_Image"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{property.imgSrcUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/marsType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/mars_Image"
+            app:layout_constraintStart_toStartOf="@+id/mars_Image"
+            app:layout_constraintTop_toBottomOf="@+id/mars_Image"
+            app:displayPropertyTypeChange="@{property}"/>
+<!--        android:text="@{property.type}"-->
+
+
+        <TextView
+            android:id="@+id/marsPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/marsType"
+            app:layout_constraintStart_toStartOf="@+id/marsType"
+            app:layout_constraintTop_toBottomOf="@+id/marsType"
+            app:displayPropertyPriceChange="@{property}"/>
+<!--        android:text="@{String.valueOf(property.price)}"-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
