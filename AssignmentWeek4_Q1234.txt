@@ -1,0 +1,54 @@
+﻿1. What is ​Polymorphism​? Try to explain in Mandarin.
+​Polymorphism 多型，可提供讓不同的子類別用不同的方式實做同一個function。
+可以讓各個物件用最適合的function呼叫。
+Ex: 動物類別內有"叫"function， 人 / 貓 / 狗 都繼承動物類別所以也可以使用"叫"function，
+多型可以讓人 / 貓 / 狗 各自實做改寫"叫"function的內容產生合適的叫聲。
+
+
+2. Here are the 7 important lifecycle methods of an ​Activity​:
+Try to explain when are they called during the lifecycle of Activity.
+
+i.onCreate() -> OnCreate is called when the activity is created and initialized.
+
+ii.onStart() -> OnStart is called when the activity becomes visible.
+
+iii.onResume() -> OnResume is called when the activity has focus.
+
+iv.onPause() -> OnPause is called when the activity loses focus.
+
+v.onStop() -> OnStop is called when the activity goes off screen.
+
+vi.onDestroy() -> OnDestroy is called once when the activity is fully destroyed.
+
+*onRestart -> OnRestart is called if app was already created and return to use after onStop() step.
+              Anything that runs only if not being created.
+
+    
+3. What is the ​Android Jetpack​?
+
+Android Jetpack is a suite of tools, documentation, and libraries.
+To help developers follow best practices, reduce boilerplate code, 
+and write code that works consistently across Android versions and devices 
+so that developers can focus on the code they care about.
+
+it content:
+1. Foundation: AppCompat, Android KTX, Multidex, Test.
+2. Architecture: Data Binding, Lifecycles, LiveData, Navigation, Room, ViewModel, WorkManager, Paging.
+3. Behavior: Animation & Transitions, Auto/TV/Wear, Emoji, Fragment, Layout, Palette.
+4. UI: Download Manager, Media & Playback, Permissions, Norifications, Sharing, Slices.
+
+
+
+4. What is ​Coroutines​? Why we use it? Try to explain in Mandarin.
+
+Coroutine 可以使程式允許多執行序，在Main thread已經有function執行時
+可以指派其他function與main同時執行。
+
+因為在Android main thread中，例如如果有個執行順序
+function(A) >> function(B) >> function(C)，如果function A的執行時間過長，
+會造成 Main thread 被function(A)占用，而 B,C要等到A結束後才能執行，
+這會造成android畫面被blocked住，輕則影響使用者體驗，嚴重的話
+如果停住超過5秒，甚至會出現"Application Not Responding" (ANR) error。
+
+
+
